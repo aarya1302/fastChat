@@ -79,7 +79,9 @@ io.use(wrap(passport.session()));
 
 io.use((socket, next) => {
   if (socket.request.user) {
+    socket.userID = socket.request.user._id;
     socket.auth = { username: socket.request.user.username };
+
     next();
   } else {
     next(new Error("unauthorized"));
@@ -88,7 +90,7 @@ io.use((socket, next) => {
 
 // socket.io connections
 
-chat_listeners(io);
+chat_listeners(io, db);
 
 //engines
 app.set("view engine", "pug");

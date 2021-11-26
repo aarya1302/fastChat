@@ -17,6 +17,8 @@ module.exports = function (app, db, message) {
             { username: username, password: password },
             (err) => {
               collection.findOne({ username: username }, (err, user) => {
+              db.getDB().collection('messages').insertOne({username:username, user_id: user._id, message_threads: {}})
+
                 return done(null, user);
               });
             }

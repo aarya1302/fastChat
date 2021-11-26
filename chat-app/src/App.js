@@ -1,95 +1,39 @@
-import axios from "axios";
-import { BSONRegExp } from "bson";
-import {
-  InputGroup,
-  FormControl,
-  SplitButton,
-  Dropdown,
-} from "react-bootstrap";
-import io from "socket.io-client";
 import { useState } from "react";
-import webSockets from "./sockets";
+import io from "socket.io-client";
+import Layout from "./components/layout";
+import Messages from "./components/messages";
+import MessageThread from "./components/messageThread";
+import UsersTaskBar from "./components/usersTaskbar";
+import authSockets from "./socketOps/authSockets";
+import chatSockets from "./socketOps/chatSockets";
 export default function App() {
-  const [messageThread, setMessageThread] = useState([]);
-  const [something, setSomething] = useState([]);
+  const [messageThread, setMessageThread] = useState(JSON.stringify({}));
+  const [currentExchangeTo, setCurrentExchangeTo] = useState(undefined);
+
   var socket = io();
   //socket.io stuff
-  socket.on("users", (users) => {
-    users.forEach((user) => {
-      user.self = user.userID === socket.id;
-    });
-    console.log(users);
-  });
+  authSockets(socket);
 
-  socket.on("session", (session) => {
-    var sessionCookie = {
-      sessionID: session.passport.user,
-      userID: session.userID,
-      username: session.username,
-    };
-    console.log(sessionCookie);
-    console.log(localStorage.getItem("sessionCookie"));
-    var storedSessionCookie = JSON.parse(localStorage.getItem("sessionCookie"));
-    console.log(storedSessionCookie);
-    if (!storedSessionCookie) {
-      localStorage.setItem("sessionCookie", JSON.stringify(sessionCookie));
-    } else {
-      socket.userID = storedSessionCookie.userID;
-    }
-  });
-  socket.on("receive message", (message) => {
-    var arr = messageThread;
-    arr.push({ message, self: false });
-    setMessageThread([...arr]);
-    console.log(message);
-  });
-
-  var handleSendMessage = (e) => {
-    e.preventDefault();
-    var input = document.getElementById("chat_box").value;
-    var room = document.getElementById("room-box").value;
-    if (input) {
-      socket.emit("chat message", input, room);
-      var arr = messageThread;
-      arr.push({ message: input, self: true });
-      console.log(messageThread);
-      setMessageThread([...arr]);
-      document.getElementById("chat_box").value = "";
-      document.getElementById("room-box").value = "";
-    }
-  };
-  var graphicalMessageThread = messageThread.map((msg) => {
-    if (msg.self) {
-      return (
-        <li>
-          <strong>{msg.message}</strong>
-        </li>
-      );
-    }
-    return <li>{msg.message}</li>;
-  });
-
+  var messageThreadObj = JSON.parse(messageThread);
+  console.log(currentExchangeTo);
+  chatSockets(socket, messageThreadObj, setMessageThread);
   return (
-    <div>
-      <h1>Fast chat</h1>
-      <ul>{graphicalMessageThread}</ul>
+    <>
+      <Layout>
+        <div className="container-fluid w-100 row">
+          <UsersTaskBar
+            messageThreadsObj={messageThreadObj}
+            setCurrentExchangeTo={setCurrentExchangeTo}
+          />
 
-      <form>
-        <input type="text" id="room-box" placeholder="room" />
-        <input type="text" id="chat_box" placeholder="message" />
-        <input type="submit" onClick={handleSendMessage} />
-      </form>
-      <br></br>
-      <button
-        onClick={async () => {
-          var res = await axios.get("/signout");
-          if (res.data.message === "redirect") {
-            window.location = "/login";
-          }
-        }}
-      >
-        logout
-      </button>
-    </div>
+          <MessageThread
+            currentExchangeTo={currentExchangeTo}
+            messageThreadObj={messageThreadObj}
+            socket={socket}
+            setMessageThread={setMessageThread}
+          />
+        </div>
+      </Layout>
+    </>
   );
 }
