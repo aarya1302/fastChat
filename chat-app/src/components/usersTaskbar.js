@@ -1,18 +1,27 @@
+import enterIcon from "../icons/arrow-return-left.svg";
+
 export default function UsersTaskBar({
   setCurrentExchangeTo,
   messageThreadsObj,
+  currentExchangeTo,
 }) {
   var exchanges = Object.keys(messageThreadsObj);
-  console.log(exchanges);
+  if (!currentExchangeTo) {
+    setCurrentExchangeTo(exchanges[0]);
+  }
   var usersGraphical = exchanges.map((user) => {
+    var isActive = user === currentExchangeTo ? " active " : "";
     return (
       <li
-        onClick={() => {
-          console.log(user, "setting to user");
+        id={user}
+        className={"list-group-item" + isActive}
+        onClick={(e) => {
+          document.getElementById(currentExchangeTo).classList.remove("active");
+          e.currentTarget.classList.add("active");
           setCurrentExchangeTo(user);
         }}
       >
-        <div>{user}</div>
+        <div className="">{user}</div>
       </li>
     );
   });
@@ -23,17 +32,23 @@ export default function UsersTaskBar({
   };
 
   return (
-    <div className="task-bar col-sm-3">
-      <form>
+    <div className="task-bar col-md-3">
+      <form className="row container-fluid">
         <input
           type="text"
-          className=" mb-4 input-style"
+          className=" mb-4 input-style username-search-input col-9"
           id="username-search-box"
           placeholder="username"
         />
-        <input type="submit" onClick={handleAddUser} />
+        <button
+          type="submit"
+          class="col-3 btn btn-light enter-button"
+          onClick={handleAddUser}
+        >
+          <img src={enterIcon} />{" "}
+        </button>
       </form>
-      <ul>{usersGraphical}</ul>
+      <ul class="list-group">{usersGraphical}</ul>
     </div>
   );
 }

@@ -2,11 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./style/index.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style/smallComponents.css";
+import io from "socket.io-client";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+var socket = io();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App></App>
+    <App socket={socket}></App>
   </React.StrictMode>,
   document.getElementById("root")
 );

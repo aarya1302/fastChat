@@ -1,0 +1,63 @@
+li {
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.nav-custom {
+  padding: 0px 20px 0px 20px;
+}
+.enter-button {
+  width: 40px;
+  height: 33px;
+  position: relative;
+  top: 1px;
+  border-radius: 0px 8px 8px 0px !important;
+}
+.recepient-text-bubble {
+  position: relative;
+  background: hsla(0, 0%, 84.3%, 0.9333333333333333);
+  border-radius: 0.4em;
+  padding: 10px 30px 10px 30px;
+  color: #4e4e4e;
+}
+.recepient-text-bubble:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 13px solid transparent;
+  border-right-color: hsla(0, 0%, 84.3%, 0.9333333333333333);
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -6.5px;
+  margin-left: -13px;
+}
+.own-text-bubble {
+  position: relative;
+  background: #2196f3;
+  border-radius: 0.4em;
+  padding: 10px 30px 10px 30px;
+  color: white;
+  right: 12px;
+}
+.own-text-bubble:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 13px solid transparent;
+  border-left-color: #2196f3;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -6.5px;
+  margin-right: -13px;
+}
+.input-style {
+  border: rgba(211, 211, 211, 0.933) 1px solid !important;
+  border-radius: 10px;
+  padding: 4px 10px 4px 24px;
+}

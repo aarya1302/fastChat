@@ -7,79 +7,48 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .message-box {
-  list-style-type: none;
   display: inline-block;
   font-size: 12px;
   font-weight: 600;
 }
-.user-search-bar {
-  position: relative;
-  top: 3px;
+.contain-messages {
+  max-height: 80vh !important;
+  padding: 0px !important;
 }
-.user-search-bar-input {
-  border: 0px !important;
-  border-radius: 5px;
-  padding: 5px 20px 5px 40px;
-  width: 400px !important;
+
+.messages-thread-container {
+  overflow-y: auto;
+  height: 90%;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
-.own-text-bubble {
-  position: relative;
-  background: #2196f3;
-  border-radius: 0.4em;
-  padding: 10px 30px 10px 30px;
-  color: white;
-}
+
 .task-bar {
-  background-color: red;
+  background-color: rgb(236, 236, 236);
+  padding-top: 30px;
   height: 85vh;
-}
-.own-text-bubble:after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border: 13px solid transparent;
-  border-left-color: #2196f3;
-  border-right: 0;
-  border-bottom: 0;
-  margin-top: -6.5px;
-  margin-right: -13px;
-}
-.nav-custom {
-  padding: 0px 20px 0px 20px;
-}
-.recepient-text-bubble {
-  position: relative;
-  background: hsla(0, 0%, 84.3%, 0.9333333333333333);
-  border-radius: 0.4em;
-  padding: 10px 30px 10px 30px;
-  color: #4e4e4e;
+  border-radius: 15px 0px 15px 15px;
 }
 
-.input-style {
-  border: rgba(211, 211, 211, 0.933) 1px solid !important;
-  border-radius: 10px;
-  padding: 4px 10px 4px 24px;
+.message-form {
+  width: 70%;
+  position: absolute;
+  top: 87%;
+  padding-left: 40px;
 }
 
-.recepient-text-bubble:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border: 13px solid transparent;
-  border-right-color: hsla(0, 0%, 84.3%, 0.9333333333333333);
-  border-left: 0;
-  border-bottom: 0;
-  margin-top: -6.5px;
-  margin-left: -13px;
+.username-search-input {
+  border-radius: 8px 0px 0px 8px !important;
+  border: solid 1px rgb(221, 221, 221) !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media (max-width: 900px) {
+  .task-bar {
+    border-radius: 15px !important;
+  }
 }
