@@ -77,7 +77,7 @@ export default function MessageThread({
               justifyContent: "center",
             }}
           >
-            {width < 1000 && (
+            {width < 950 && (
               <div
                 style={{ paddingRight: 10 }}
                 onClick={() => {
@@ -95,6 +95,21 @@ export default function MessageThread({
         </div>
 
         <div className="messages-thread-container" id="messages-thread-box">
+          {users.length === 0 && (
+            <div style={{ position: "absolute", top: "45%", left: "47%" }}>
+              <h4>Enter Username and Text Someone!</h4>
+              <div style={{ position: "relative", left: 120 }}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    document.getElementById("username-search-box").select();
+                  }}
+                >
+                  New Message
+                </button>
+              </div>
+            </div>
+          )}
           <ul className="">{graphicalMessageThread}</ul>
         </div>
         <form className="row message-form">

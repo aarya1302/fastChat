@@ -33,15 +33,16 @@ export default function UsersTaskBar({
   var handleAddUser = (e) => {
     e.preventDefault();
     var user = document.getElementById("username-search-box").value;
+    document.getElementById("chat_box").select();
     setCurrentExchangeTo(user);
   };
 
   return (
     <div className="task-bar col-md-3">
-      <form className="row container-fluid">
+      <form className="row container-fluid w-100" style={{justifyContent:'center'}}>
         <input
           type="text"
-          className=" mb-4 input-style username-search-input col-9"
+          className=" mb-4 input-style username-search-input col-8"
           id="username-search-box"
           placeholder="username"
         />
@@ -50,9 +51,24 @@ export default function UsersTaskBar({
           class="col-3 btn btn-light enter-button"
           onClick={handleAddUser}
         >
-          <img src={enterIcon} />{" "}
+          <img src={enterIcon} />
         </button>
       </form>
+      {exchanges.length === 0 && width < 950 && (
+        <div className="text-center">
+          <h4>Enter Username and Text Someone!</h4>
+          <div>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                document.getElementById("username-search-box").select();
+              }}
+            >
+              New Message
+            </button>
+          </div>
+        </div>
+      )}
       <ul class="list-group">{usersGraphical}</ul>
     </div>
   );

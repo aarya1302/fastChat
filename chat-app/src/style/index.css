@@ -18,7 +18,7 @@ body {
 
 .messages-thread-container {
   overflow-y: auto;
-  height: 96%;
+  height: 91%;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -51,8 +51,9 @@ code {
   border-radius: 0px 15px 0px 0px !important;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 950px) {
   .task-bar {
+    width: 100% !important;
     border-radius: 15px !important;
   }
   .messages-thread-container {

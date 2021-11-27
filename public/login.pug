@@ -21,13 +21,13 @@ html
         p
           | We strive to connect everyone in the world no matter how far they are
           | right now.
-        a.btn.btn-primary.btn-lg(href='#', role='button') Learn more
       .container.mt-5
         if displayMessage
           div.alert-div.alert.alert-danger(role='alert' ) #{message} 
             button#close-alert.close 
               img(src='x-lg.svg')
-        h3.text-center.text-primary Login
+        h3.text-center.text-primary Login or 
+          span.text-dark Sign Up
         form(action='http://localhost:3000/submitlogin', method='POST')
           .form-group.mt-5
             label(for='username') Username

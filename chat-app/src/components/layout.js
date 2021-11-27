@@ -1,8 +1,13 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 export default function Layout({ children }) {
+  useEffect(()=>{
+    document.title = 'Fast Chat'
+  })
   return (
     <>
+    
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home" className="text-primary">

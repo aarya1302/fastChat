@@ -19,6 +19,10 @@ module.exports = (app, db, io) => {
       if (err) {
         if (err.message === "Invalid Password") {
           return res.redirect("/login?message=" + err.message);
+        } else if (err.message === "short password") {
+          return res.redirect(
+            "/login?message=" + "Password must be at least 8 characters long"
+          );
         }
       }
       if (!user) {

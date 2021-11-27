@@ -50,7 +50,6 @@ var sessionMiddleware = session({
   }),
   resave: false,
   saveUninitialized: true,
-
   cookie: { secure: false },
   key: "express.sid",
 });
