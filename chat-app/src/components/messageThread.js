@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 import sendIcon from "../icons/send.svg";
+import chevronleft from "../icons/chevron-left.svg";
+import camera from "../icons/camera.svg";
 export default function MessageThread({
   messageThreadObj,
   currentExchangeTo,
   socket,
   setMessageThread,
+  width,
+  setCurrentExchangeTo,
 }) {
   useEffect(() => {
     var elem = document.getElementById("messages-thread-box");
@@ -66,14 +70,28 @@ export default function MessageThread({
   return (
     <div className="col-md-9" style={{ padding: 0 }}>
       <div className="h-100 contain-messages">
-        <div
-          className="p-3"
-          style={{
-            background: "rgb(236, 236, 236)",
-            borderRadius: "0px 15px 0px 0px",
-          }}
-        >
-          <h4 className="text-muted text-center">{currentExchangeTo}</h4>
+        <div className="p-1 exchangeUsername">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {width < 1000 && (
+              <div
+                style={{ paddingRight: 10 }}
+                onClick={() => {
+                  setCurrentExchangeTo(undefined);
+                }}
+              >
+                <img src={chevronleft}></img>
+              </div>
+            )}
+
+            <h4 style={{ paddingLeft: 10 }} className="text-muted text-center ">
+              {currentExchangeTo}
+            </h4>
+          </div>
         </div>
 
         <div className="messages-thread-container" id="messages-thread-box">
@@ -86,13 +104,15 @@ export default function MessageThread({
             id="chat_box"
             placeholder="message"
           />
-          <button
-            type="submit"
-            onClick={handleSendMessage}
-            className="btn btn-light round-button col-2"
-          >
-            <img src={sendIcon} />
-          </button>
+          <div className="col-2 ">
+            <button
+              type="submit"
+              onClick={handleSendMessage}
+              className="btn btn-light round-button col w-100"
+            >
+              <img src={sendIcon} />
+            </button>
+          </div>
         </form>
       </div>
     </div>

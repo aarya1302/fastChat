@@ -18,22 +18,22 @@ body {
 
 .messages-thread-container {
   overflow-y: auto;
-  height: 90%;
+  height: 96%;
   overflow-x: hidden;
   padding-top: 20px;
 }
 
 .task-bar {
   background-color: rgb(236, 236, 236);
-  padding-top: 30px;
-  height: 85vh;
+  padding-top: 10px;
+  height: 89vh;
   border-radius: 15px 0px 15px 15px;
 }
 
 .message-form {
   width: 70%;
   position: absolute;
-  top: 87%;
+  top: 93%;
   padding-left: 40px;
 }
 
@@ -46,9 +46,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.exchangeUsername {
+  background: rgb(236, 236, 236) !important;
+  border-radius: 0px 15px 0px 0px !important;
+}
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .task-bar {
     border-radius: 15px !important;
+  }
+  .messages-thread-container {
+    max-height: 70vh;
+    padding-top: 10px;
+  }
+  .message-form {
+    width: 95%;
+    padding-left: 25px;
+  }
+  .exchangeUsername {
+    border-radius: 0px !important;
   }
 }

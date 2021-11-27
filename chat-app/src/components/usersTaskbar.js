@@ -4,9 +4,10 @@ export default function UsersTaskBar({
   setCurrentExchangeTo,
   messageThreadsObj,
   currentExchangeTo,
+  width,
 }) {
   var exchanges = Object.keys(messageThreadsObj);
-  if (!currentExchangeTo) {
+  if (!currentExchangeTo && width > 900) {
     setCurrentExchangeTo(exchanges[0]);
   }
   var usersGraphical = exchanges.map((user) => {
@@ -16,7 +17,11 @@ export default function UsersTaskBar({
         id={user}
         className={"list-group-item" + isActive}
         onClick={(e) => {
-          document.getElementById(currentExchangeTo).classList.remove("active");
+          if (currentExchangeTo) {
+            document
+              .getElementById(currentExchangeTo)
+              .classList.remove("active");
+          }
           e.currentTarget.classList.add("active");
           setCurrentExchangeTo(user);
         }}

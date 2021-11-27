@@ -11,6 +11,7 @@ export default function App({ socket }) {
   const [messageThread, setMessageThread] = useState(JSON.stringify({}));
   const [currentExchangeTo, setCurrentExchangeTo] = useState(undefined);
   const [width, setWidth] = useState(window.innerWidth);
+
   //socket.io stuff
   authSockets(socket);
 
@@ -28,21 +29,47 @@ export default function App({ socket }) {
   return (
     <>
       <Layout>
-        <div className="container-fluid w-100 row">
-          <UsersTaskBar
-            currentExchangeTo={currentExchangeTo}
-            messageThreadsObj={messageThreadObj}
-            setCurrentExchangeTo={setCurrentExchangeTo}
-          />
-          {width > 900 && (
-            <MessageThread
-              currentExchangeTo={currentExchangeTo}
-              messageThreadObj={messageThreadObj}
-              socket={socket}
-              setMessageThread={setMessageThread}
-            />
-          )}
-        </div>
+        {width < 900 ? (
+          <>
+            {currentExchangeTo ? (
+              <MessageThread
+                currentExchangeTo={currentExchangeTo}
+                messageThreadObj={messageThreadObj}
+                socket={socket}
+                setMessageThread={setMessageThread}
+                width={width}
+                setCurrentExchangeTo={setCurrentExchangeTo}
+              />
+            ) : (
+              <UsersTaskBar
+                width={width}
+                currentExchangeTo={currentExchangeTo}
+                messageThreadsObj={messageThreadObj}
+                setCurrentExchangeTo={setCurrentExchangeTo}
+                width={width}
+              />
+            )}
+          </>
+        ) : (
+          <>
+            <div className="container-fluid w-100 row">
+              <UsersTaskBar
+                width={width}
+                currentExchangeTo={currentExchangeTo}
+                messageThreadsObj={messageThreadObj}
+                setCurrentExchangeTo={setCurrentExchangeTo}
+              />
+              <MessageThread
+                currentExchangeTo={currentExchangeTo}
+                messageThreadObj={messageThreadObj}
+                socket={socket}
+                setMessageThread={setMessageThread}
+                setCurrentExchangeTo={setCurrentExchangeTo}
+                width={width}
+              />
+            </div>
+          </>
+        )}
       </Layout>
     </>
   );

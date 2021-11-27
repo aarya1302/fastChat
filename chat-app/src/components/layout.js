@@ -1,32 +1,40 @@
 import axios from "axios";
-
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 export default function Layout({ children }) {
   return (
     <>
-      <div className="container-fluid  ">
-        <nav class="navbar nav-custom  row navbar-primary ">
-          <a class="navbar-brand col-1" href="#">
-            <h5 className="text-primary text-center ">Fast Chat</h5>
-          </a>
-
-          <div class="col-1">
-            <button
-              className="btn text-dark"
-              onClick={async () => {
-                var res = await axios.get("/signout");
-                if (res.data.message === "redirect") {
-                  window.location = "/login";
-                }
-              }}
-            >
-              logout
-            </button>
-          </div>
-        </nav>
-        <div className="nav"></div>
-
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home" className="text-primary">
+            Fast Chat
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link>
+                <button
+                  className="btn text-dark"
+                  onClick={async () => {
+                    var res = await axios.get("/signout");
+                    if (res.data.message === "redirect") {
+                      window.location = "/login";
+                    }
+                  }}
+                >
+                  logout
+                </button>
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      {window.innerWidth < 900 ? (
         <main>{children}</main>
-      </div>
+      ) : (
+        <div className="container-fluid mt-2">
+          <main>{children}</main>
+        </div>
+      )}
     </>
   );
 }
