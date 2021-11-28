@@ -9,7 +9,7 @@ module.exports = function (app, db, message) {
       collection.findOne({ username: username }, (err, user) => {
         if (user) {
           const hash = crypto
-            .pbkdf2Sync(password, this.salt, 10000, 512, "sha512")
+            .pbkdf2Sync(password, user.salt, 10000, 512, "sha512")
             .toString("hex");
           if (user.hash === hash) done(null, user);
           else {
