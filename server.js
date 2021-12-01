@@ -95,7 +95,7 @@ chat_listeners(io, db);
 app.set("view engine", "pug");
 
 app.get("/", ensureAuthenticated, (req, res) => {
-  res.sendFile("/chat-app/build/index.html");
+  res.sendFile(process.cwd()+"/chat-app/build/index.html");
 });
 
 //serving files
