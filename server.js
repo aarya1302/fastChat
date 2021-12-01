@@ -94,15 +94,13 @@ chat_listeners(io, db);
 //engines
 app.set("view engine", "pug");
 
-//serving files
-app.use(express.static(process.cwd() + "/public/"));
-app.use(express.static(process.cwd() + "/chat-app/build/"));
-
-
 app.get("/", ensureAuthenticated, (req, res) => {
   res.sendFile(process.cwd()+"/chat-app/build/index.html");
 });
 
+//serving files
+app.use(express.static(process.cwd() + "/public/"));
+app.use(express.static(process.cwd() + "/chat-app/build/"));
 
 //routes
 
