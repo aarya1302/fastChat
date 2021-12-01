@@ -97,13 +97,12 @@ app.set("view engine", "pug");
 
 app.get("/", ensureAuthenticated, (req, res) => {
 
-  console.log(process.cwd())
   res.sendFile(process.cwd()+"/chat-app/build/index.html");
 });
 
 //serving files
 app.use(express.static(process.cwd() + "/public/"));
-app.use(express.static( "/chat-app/build/"));
+app.use(express.static(process.cwd() + "/chat-app/build/"));
 
 //routes
 
