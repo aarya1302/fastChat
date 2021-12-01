@@ -103,7 +103,7 @@ app.get("/", ensureAuthenticated, (req, res) => {
 
 //serving files
 app.use(express.static(process.cwd() + "/public/"));
-app.use(express.static(process.cwd() + "/chat-app/build/"));
+app.use(express.static( "/chat-app/build/"));
 
 //routes
 
