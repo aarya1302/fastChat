@@ -111,7 +111,7 @@ authStrategy(app, db);
 
 // connection
 db.connect((err) => {
-  server.listen(process.env.PORT , function (req, res) {
+  server.listen(process.env.PORT || 3000, function (req, res) {
     console.log("listening 3000");
   });
 });
