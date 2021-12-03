@@ -64,12 +64,16 @@ module.exports = (io, db) => {
           }
         );
       });
-      socket
+      var userOnline = OnlineUsersStore[username]
+      if(userOnline){
+        socket
         .to(OnlineUsersStore[username]["socketId"])
         .emit("receive message", {
           from: socket_user.username,
           message: { text: msg, self: false },
         });
+      }
+
     });
   });
 };
