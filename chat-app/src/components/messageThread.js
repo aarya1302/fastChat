@@ -68,7 +68,7 @@ export default function MessageThread({
   }
 
   return (
-    <div className="col-md-9" style={{ padding: 0 }}>
+    <div className="col-lg-9" style={{ padding: 0 }}>
       <div className="h-100 contain-messages">
         <div className="p-1 exchangeUsername">
           <div

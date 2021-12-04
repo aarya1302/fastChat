@@ -33,12 +33,15 @@ export default function UsersTaskBar({
   var handleAddUser = (e) => {
     e.preventDefault();
     var user = document.getElementById("username-search-box").value;
-    document.getElementById("chat_box").select();
+    if(document.getElementById("chat_box")){
+
+      document.getElementById("chat_box").select();
+    }
     setCurrentExchangeTo(user);
   };
 
   return (
-    <div className="task-bar col-md-3">
+    <div className="task-bar col-lg-3">
       <form className="row container-fluid w-100" style={{justifyContent:'center'}}>
         <input
           type="text"
@@ -54,7 +57,7 @@ export default function UsersTaskBar({
           <img src={enterIcon} />
         </button>
       </form>
-      {exchanges.length === 0 && width < 950 && (
+      {exchanges.length === 0 && width < 987 && (
         <div className="text-center">
           <h4>Enter Username and Text Someone!</h4>
           <div>

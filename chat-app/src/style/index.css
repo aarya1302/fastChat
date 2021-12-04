@@ -51,7 +51,7 @@ code {
   border-radius: 0px 15px 0px 0px !important;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 990px) {
   .task-bar {
     width: 100% !important;
     border-radius: 15px !important;

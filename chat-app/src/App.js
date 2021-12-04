@@ -29,7 +29,7 @@ export default function App({ socket }) {
   return (
     <>
       <Layout>
-        {width < 950 ? (
+        {width < 990 ? (
           <>
             {currentExchangeTo ? (
               <MessageThread

@@ -7,6 +7,7 @@ export default function chatSockets(
     if (!messageThreadObj[data.from]) {
       messageThreadObj[data.from] = [data.message];
     } else {
+
       messageThreadObj[data.from].push(data.message);
     }
     setMessageThread(JSON.stringify(messageThreadObj));
