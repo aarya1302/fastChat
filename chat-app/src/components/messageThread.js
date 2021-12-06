@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import sendIcon from "../icons/send.svg";
 import chevronleft from "../icons/chevron-left.svg";
 import camera from "../icons/camera.svg";
-export default function MessageThread({
+export default function  MessageThread({
   messageThreadObj,
   currentExchangeTo,
   socket,
@@ -44,7 +44,7 @@ export default function MessageThread({
               return (
                 <div
                   className="mb-2 "
-                  style={{ display: "flex", justifyContent: "right" }}
+                  style={{ display: "flex", justifyContent: "end" }}
                 >
                   <li className="message-box own-text-bubble">{msg.text}</li>
                 </div>
