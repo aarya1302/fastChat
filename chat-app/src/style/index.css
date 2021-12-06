@@ -68,3 +68,9 @@ code {
     border-radius: 0px !important;
   }
 }
+@media (max-height:500px ){
+  .messages-thread-container{
+    max-height: 65vh;
+  }
+
+}
