@@ -40,7 +40,7 @@ li {
   border-radius: 0.4em;
   padding: 10px 30px 10px 30px;
   color: white;
-  right: 12px;
+
 }
 .own-text-bubble:after {
   content: "";
