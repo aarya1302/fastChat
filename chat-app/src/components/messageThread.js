@@ -44,7 +44,7 @@ export default function  MessageThread({
               return (
                 <div
                   className="mb-2 "
-                  style={{ display: "flex", justifyContent: "end" }}
+                  style={{ display: "flex", justifyContent: "flex-end" }}
                 >
                   <li className="message-box own-text-bubble">{msg.text}</li>
                 </div>
