@@ -1,5 +1,5 @@
 import enterIcon from "../icons/arrow-return-left.svg";
-//user task bar component
+//user task bar component done with react
 export default function UsersTaskBar({
   setCurrentExchangeTo,
   messageThreadsObj,
