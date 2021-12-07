@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import sendIcon from "../icons/send.svg";
 import chevronleft from "../icons/chevron-left.svg";
 import camera from "../icons/camera.svg";
+//message thread gui
 export default function  MessageThread({
   messageThreadObj,
   currentExchangeTo,
