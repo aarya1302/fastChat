@@ -30,7 +30,6 @@ const { ObjectId } = require("bson");
 //importing socket.io listeners
 const chat_listeners = require("./chat-listeners");
 
-
 //general middlewares
 app.use(cors());
 app.use(bodyParser());
@@ -96,8 +95,7 @@ chat_listeners(io, db);
 app.set("view engine", "pug");
 
 app.get("/", ensureAuthenticated, (req, res) => {
-
-  res.sendFile(process.cwd()+"/chat-app/build/index.html");
+  res.sendFile(process.cwd() + "/chat-app/build/index.html");
 });
 
 //serving files
