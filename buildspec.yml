@@ -1,0 +1,44 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing source NVM (Node Version Manager)
+      - . $NVM_DIR/nvm.sh
+      - nvm install node # This installs the latest version of Node.js
+      - node -v
+      - npm -v
+      - echo Installing server dependencies
+      - npm install --prefix server
+      - echo Installing client dependencies
+      - npm install --prefix client
+      
+  pre_build:
+    commands:
+      - echo Running tests
+      - npm test --prefix server
+      - npm test --prefix client
+
+  build:
+    commands:
+      - echo Building the React client
+      - cd chat-app
+      - npm run build --prefix client # This creates the production build of the React app
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - server/**/*
+    - client/build/**/*
+  base-directory: 'client/build' # Specifies the directory from where the artifacts are stored
+
+cache:
+  paths:
+    - '/root/.npm/**/*'
+    - '/root/.cache/**/*'
+    - 'client/node_modules/**/*'
+    - 'server/node_modules/**/*'
+
