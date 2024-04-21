@@ -24,6 +24,9 @@ var connect = (cb) => {
 };
 
 var getDB = () => {
+  /* `return state.db;` is a function in the code that returns the current database connection stored
+  in the `state` object. This allows other parts of the code to access the database connection
+  established by the `connect` function. */
   return state.db;
 };
 
