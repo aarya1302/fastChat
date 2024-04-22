@@ -26,4 +26,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f aaryab/fastchat
       - name: Run Docker Container
-        run: docker run -d -p 5555:5555 --name fastchat -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' aaryab/fastchat
+        run: docker run -d -p 3000:3000 --name fastchat -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' aaryab/fastchat
