@@ -24,6 +24,9 @@ jobs:
       - name: Pull image from docker hub
         run: docker pull aaryab/fastchat:latest
       - name: Delete old container
-        run: docker rm -f aaryab/fastchat
+        run: docker rm -f fastchat
       - name: Run Docker Container
         run: docker run -d -p 3000:3000 --name fastchat -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' aaryab/fastchat
+    env:
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
