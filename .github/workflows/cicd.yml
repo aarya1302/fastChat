@@ -28,5 +28,5 @@ jobs:
       - name: Run Docker Container
         run: docker run -d -p 3000:3000 --name fastchat -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' aaryab/fastchat
     env:
-      MONGO_URI: ${{ secrets.MONGO_URI }}
-      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+      MONGO_URI: ${{secrets.MONGO_URI}}
+      SESSION_SECRET: ${{secrets.SESSION_SECRET}}
