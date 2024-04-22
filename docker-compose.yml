@@ -10,7 +10,7 @@ services:
   backend:
     build:
       context: .
-      dockerfile: Dockerfile-backend
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
@@ -20,15 +20,6 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-
-  # frontend:
-  #   build:
-  #     context: ./chat-app
-  #     dockerfile: Dockerfile-frontend
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - backend
 
 volumes:
   mongodb_data:
