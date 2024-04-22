@@ -43,10 +43,9 @@ app.use(
 
 //authentication middlewares
 var sessionMiddleware = session({
-  secret: process.env.SESSION_SECRET,
+  secret: "somethingsecret",
   store: MongoStore.create({
-    mongoUrl:
-      "mongodb+srv://aaryabhorra:ab1302ls@cluster0.krijj.mongodb.net/fast-chat?retryWrites=true&w=majority",
+    mongoUrl: process.env.MONGO_URI,
   }),
   resave: false,
   saveUninitialized: true,
