@@ -22,8 +22,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Pull image from docker hub
-        run: docker pull aaryab/fastchat:latest
+        run: docker pull aaryab/fastchat
       - name: Delete old container
-        run: docker rm -f aaryab/fastchat
       - name: Run Docker Container
         run: docker run -d -p 5555:5555 --name fastchat:latest -e MONGO_PASSWORD='${{ secrets.MONGO_PASSWORD }}' aaryab/fastchat
