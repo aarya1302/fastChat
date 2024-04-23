@@ -43,11 +43,10 @@ app.use(
 
 //authentication middlewares
 var sessionMiddleware = session({
-  secret: "somethingsecret",
+  secret: process.env.SESSION_SECRET,
 
   store: MongoStore.create({
-    mongoUrl:
-      "mongodb+srv://aaryabhorra:ab1302ls@cluster0.krijj.mongodb.net/fast-chat?retryWrites=true&w=majority",
+    mongoUrl: process.env.MONGO_URI,
   }),
   resave: false,
   saveUninitialized: true,
@@ -114,6 +113,5 @@ authStrategy(app, db);
 db.connect((err) => {
   server.listen(process.env.PORT || 3000, function (req, res) {
     console.log("listening 3000");
-    console.log(process.env.SESSION_SECRET);
   });
 });

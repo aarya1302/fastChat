@@ -3,8 +3,7 @@ const { setUncaughtExceptionCaptureCallback } = require("process");
 const MongoClient = require("mongodb").MongoClient;
 const MongoOptions = require("mongodb").MongoOptions;
 require("dotenv").config({ path: ".env" });
-let uri =
-  "mongodb+srv://aaryabhorra:ab1302ls@cluster0.krijj.mongodb.net/fast-chat?retryWrites=true&w=majority";
+let uri = process.env.MONGO_URI;
 let dbname = "fast-chat";
 
 var state = {
