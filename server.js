@@ -114,5 +114,6 @@ authStrategy(app, db);
 db.connect((err) => {
   server.listen(process.env.PORT || 3000, function (req, res) {
     console.log("listening 3000");
+    console.log(process.env.SESSION_SECRET);
   });
 });
