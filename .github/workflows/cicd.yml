@@ -13,10 +13,7 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build Docker Image
-        run: |
-          docker build -t aaryab/fastchat . \
-            --build-arg MONGO_URI=${{ secrets.MONGO_URI }} \
-            --build-arg SESSION_SECRET=${{ secrets.SESSION_SECRET }}
+        run: docker build -t aaryab/fastchat . --build-arg MONGO_URI=${{ secrets.MONGO_URI }} --build-arg SESSION_SECRET=${{ secrets.SESSION_SECRET }}
       - name: Publish Image to docker hub
         run: docker push aaryab/fastchat
 
