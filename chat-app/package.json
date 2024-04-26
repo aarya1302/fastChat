@@ -11,7 +11,6 @@
     "consolidate": "^0.16.0",
     "http": "^0.0.1-security",
     "jquery": "^3.6.0",
-    "passport": "^0.7.0",
     "pug": "^3.0.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
@@ -19,6 +18,7 @@
     "react-scripts": "4.0.3",
     "socket.io-client": "^4.4.0",
     "web-vitals": "^1.1.2"
+    
   },
   "scripts": {
     "start": "react-scripts start",
