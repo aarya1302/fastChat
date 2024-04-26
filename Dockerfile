@@ -1,13 +1,3 @@
-# FROM node:12
-# WORKDIR /app
-# COPY package*.json ./
-# RUN npm install 
-# COPY . . 
-# ENV PORT=8080
-# ENV SESSION_SECRET=somethingsecret
-# ENV MONGO_URI=mongodb://localhost:27017/fast-chat
-# EXPOSE 8080
-# CMD [ "npm", "start" ]
 
 # Stage 1: Build the React frontend
 FROM node:14 as builder
