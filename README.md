@@ -26,11 +26,6 @@ MONGO_URI: mongodb://mongo:27017/fast-chat
 ```bash
 SESSION_SECRET=somethingsecret
 ```
-```bash 
-docker-compose up --build
-```
-
-This command rebuilds the services defined in your docker-compose.yml file and starts the updated application. Ensure that MongoDB-specific configurations are correctly set in your Docker configurations to avoid connection issues.
 
 
 
