@@ -1,4 +1,4 @@
-# ChatApp
+# ChatApp 
 
 Welcome to ChatApp! A modern chat application that lets you connect and communicate effortlessly. Built with [insert technologies used, e.g., Node.js, React], this app offers a seamless chatting experience.
 <br>
